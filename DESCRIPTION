@@ -4,7 +4,11 @@ Version: 0.0.4
 Authors@R: 
     person("Silas", "Ørting", , "silas@di.ku.dk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3081-1547"))
-Description: Functions for visualizing log files from Daisy simulations.
+Description: Provides tools for reading, transforming, and visualizing
+    log files produced by Daisy simulations. Includes support for
+    importing '.dlf' output files, reshaping depth-dependent and
+    time-series data, and creating static and interactive plots for
+    exploratory analysis and comparison of simulation results.
 License: GPL (>= 3)
 Depends: R (>= 4.1.0)
 Encoding: UTF-8
@@ -26,4 +30,4 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-URL: https://daisy-model.github.io/daisyrVis/
+URL: https://daisy-model.github.io/daisyrVis/, https://daisy.ku.dk/
