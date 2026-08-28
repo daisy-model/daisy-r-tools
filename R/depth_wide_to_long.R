@@ -45,7 +45,7 @@ depth_wide_to_long <- function(dlf, var_name, time_name="time",
         colnames(df)[varying_idx] <- varying
         ## Reshape the data. Base reshape is slow and tidyr::pivot_longer does
         ## what we want out of the box
-        data <- tidyr::pivot_longer(df, varying, names_to=depth_name,
+        data <- tidyr::pivot_longer(df, all_of(varying), names_to=depth_name,
                                     values_to=var_name, names_prefix=prefix,
                                     names_transform=as.double)
         ## The result from tidyr is a tibble. We should consider switching to
