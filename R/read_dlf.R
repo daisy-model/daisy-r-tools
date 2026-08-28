@@ -34,7 +34,7 @@
 #' @export
 #'
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' path <- file.path(data_dir, "annual/Annual-FN/HourlyP-Annual-FN-2-2b.dlf")
 #' dlf <- read_dlf(path)
 #' slotNames(dlf)
@@ -48,16 +48,16 @@ read_dlf <- function(path, mode="auto", pattern=".*\\.dlf", col_name="sim",
         mode <- guess_read_mode(path, pattern)
     }
     if (mode == "file") {
-        dlfs <- daisyrVis::read_dlf_file(path)
+        dlfs <- daisytools::read_dlf_file(path)
     } else if (mode == "spawn") {
-        dlfs <- daisyrVis::read_dlf_spawn(path, pattern, col_name)
+        dlfs <- daisytools::read_dlf_spawn(path, pattern, col_name)
     } else if (mode == "dir") {
-        dlfs <- daisyrVis::read_dlf_dir(path, pattern)
+        dlfs <- daisytools::read_dlf_dir(path, pattern)
     } else {
         stop(paste("Unknown mode", mode))
     }
     if (convert_time) {
-        dlfs <- daisyrVis::daisy_time_to_timestamp(dlfs)
+        dlfs <- daisytools::daisy_time_to_timestamp(dlfs)
         if (convert_depth) {
             unlist <- FALSE
             if (!is.list(dlfs)) {
@@ -67,7 +67,7 @@ read_dlf <- function(path, mode="auto", pattern=".*\\.dlf", col_name="sim",
             dlfs <- lapply(dlfs, function(dlf) {
                 if (is_depth_data(dlf, col_name)) {
                     var_name <- guess_var_name(dlf, col_name)
-                    daisyrVis::depth_wide_to_long(dlf, var_name)
+                    daisytools::depth_wide_to_long(dlf, var_name)
                 } else {
                     dlf
                 }

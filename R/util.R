@@ -5,7 +5,7 @@
 #' @return A list of Dlfs where FUN is TRUE
 #' @export
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' dlfs <- read_dlf_dir(file.path(data_dir, "annual"))
 #' names(dlfs)
 #' ## We only want the dlfs that have a "Crop" column
@@ -29,7 +29,7 @@ filter_dlfs <- function(dlfs, FUN) {
 #' @return A Dlf object with the data of the dlfs merged into a single dlf.
 #' @export
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' dlfs <- read_dlf_dir(file.path(data_dir, "annual"))
 #' dlfs <- dlfs[startsWith(names(dlfs), "Annual-FN")]
 #' dlfs <- dir_names_to_columns(dlfs)

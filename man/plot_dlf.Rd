@@ -69,7 +69,7 @@ Plot one or more variables from one or more Dlfs.
 Each variable is plotted in a separate subplot.
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual/Annual-FN")
 dlfs <- read_dlf(path)
 

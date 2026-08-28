@@ -17,7 +17,7 @@
 #' @export
 #'
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' path <- file.path(data_dir, "daily/DailyP/DailyP-Daily-WaterFlux.dlf")
 #' dlf <- read_dlf(path, convert_depth=FALSE)
 #' dlf@data[1,]

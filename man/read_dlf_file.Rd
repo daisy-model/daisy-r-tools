@@ -21,7 +21,7 @@ data is a data.frame containing the logged values
 Read a dlf file (Daisy log file)
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual/Annual-FN/HourlyP-Annual-FN-2-2b.dlf")
 dlf <- read_dlf_file(path)
 slotNames(dlf)

@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(daisyrVis)
+library(daisytools)
 
-test_check("daisyrVis")
+test_check("daisytools")

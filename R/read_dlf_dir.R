@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' dlfs <- read_dlf_dir(file.path(data_dir, "annual"))
 #' print(names(dlfs))
 #'
@@ -21,7 +21,7 @@ read_dlf_dir <- function(directory, pattern=".*\\.dlf") {
     dlfs <- list()
     for (path in list.files(directory, pattern=pattern, recursive=TRUE)) {
         name <- substr(path, 1, nchar(path) - 4)
-        dlfs[[name]] <- daisyrVis::read_dlf_file(file.path(directory, path))
+        dlfs[[name]] <- daisytools::read_dlf_file(file.path(directory, path))
     }
     dlfs
 }
@@ -64,7 +64,7 @@ strip_common_prefix_from_names <- function(dlfs) {
 #' @export
 
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' dlfs <- read_dlf_dir(file.path(data_dir, "annual"))
 #' names(dlfs)
 #' dlfs <- dir_names_to_columns(dlfs)
@@ -114,7 +114,7 @@ dir_names_to_columns <- function(dlfs, column_name_prefix=NULL) {
 #' @export
 #'
 #' @examples
-#' data_dir <- file.path(system.file("extdata", package="daisyrVis",
+#' data_dir <- file.path(system.file("extdata", package="daisytools",
 #'                                   "daisy-spawn-like"))
 #' print(list.files(data_dir, recursive=TRUE))
 #' dlfs <- read_dlf_spawn(data_dir)
@@ -127,8 +127,8 @@ read_dlf_spawn <- function(directory, pattern=".*\\.dlf", col_name="sim") {
     dlf_names <- basename(names(dlfs))
     log_names <- unique(dlf_names)
     dlfs <- lapply(log_names, function(log_name) {
-        daisyrVis::merge_dlfs(dir_names_to_columns(dlfs[log_name == dlf_names],
-                                                   col_name), NULL)
+        daisytools::merge_dlfs(dir_names_to_columns(dlfs[log_name == dlf_names],
+                                                    col_name), NULL)
     })
     names(dlfs) <- log_names
     dlfs

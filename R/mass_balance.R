@@ -11,7 +11,7 @@
 #'         time point.
 #' @export
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' path <- file.path(data_dir, "hourly/P2D-Daily-Soil_Chemical_110cm.dlf")
 #' dlf <- read_dlf(path)
 #' input <- c("In_Matrix", "In_Biopores", "External", "Transform", "Tillage")
@@ -61,7 +61,7 @@ mass_balance <- function(dlfs, input, output, content,
 #'
 #' @export
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' path <- file.path(data_dir, "hourly/P2D-Daily-Soil_Chemical_110cm.dlf")
 #' dlf <- read_dlf(path)
 #' input <- c("In_Matrix", "In_Biopores", "External", "Transform", "Tillage")
@@ -114,7 +114,7 @@ plot_mass_balance <- function(dlfs, x_var, title_suffix="") {
 #'         Balance.
 #' @export
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' path <- file.path(data_dir, "hourly/P2D-Daily-Soil_Chemical_110cm.dlf")
 #' dlf <- read_dlf(path)
 #' input <- c("In_Matrix", "In_Biopores", "External", "Transform", "Tillage")

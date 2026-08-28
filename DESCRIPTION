@@ -1,5 +1,5 @@
-Package: daisyrVis
-Title: Visualization of Daisy Log Files
+Package: daisytools
+Title: Tools for Working with Daisy Simulation Output
 Version: 0.0.4
 Authors@R: 
     person("Silas", "Ørting", , "silas@di.ku.dk", role = c("aut", "cre"),
@@ -30,4 +30,4 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-URL: https://daisy-model.github.io/daisyrVis/, https://daisy.ku.dk/
+URL: https://daisy-model.github.io/daisy-r-tools/, https://daisy.ku.dk/

@@ -37,7 +37,7 @@
 #'         variable, it is not possible to add further data to it.
 #' @export
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' path <- file.path(data_dir, "annual/Annual-FN")
 #' dlfs <- read_dlf(path)
 #'
