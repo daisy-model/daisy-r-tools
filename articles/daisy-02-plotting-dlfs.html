@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Plotting dlfs • daisyrVis</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Plotting dlfs">
 </head>
@@ -146,20 +146,20 @@ nitrogen</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Surface_Loss"</span>, <span class="st">"Denitrification"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/plot_dlf.html">plot_dlf</a></span><span class="op">(</span><span class="va">dlfs</span>, <span class="st">"year"</span>, <span class="va">y_vars</span>, type<span class="op">=</span><span class="st">"bar"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-6-1.png" width="672">
+<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="672">
 Notice how <code>plot_dlf</code> plots each variable in a separate sub
 plot, and each scenario (AKA dlf) with a different color.</p>
 <p>We can also make a line or points plot, or combine the plots
 types</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_dlf.html">plot_dlf</a></span><span class="op">(</span><span class="va">dlfs</span>, <span class="st">"year"</span>, <span class="va">y_vars</span>, <span class="st">"lines"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
+<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_dlf.html">plot_dlf</a></span><span class="op">(</span><span class="va">dlfs</span>, <span class="st">"year"</span>, <span class="va">y_vars</span>, <span class="st">"points"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-7-2.png" width="672"></p>
+<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-7-2.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_dlf.html">plot_dlf</a></span><span class="op">(</span><span class="va">dlfs</span>, <span class="st">"year"</span>, <span class="va">y_vars</span>, <span class="st">"lines-points-bar"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-7-3.png" width="672"></p>
+<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-7-3.png" class="r-plt" alt="" width="672"></p>
 <p>The lines and points plot types are usually better suited when we
 have more data points. To see this we will load another dlf file using
 <code>read_dlf</code></p>
@@ -180,14 +180,30 @@ have more data points. To see this we will load another dlf file using
 <span><span class="co">#&gt; [21] "Error"                   "time"</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Leak_Matrix"</span>, <span class="st">"Transform"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/plot_dlf.html">plot_dlf</a></span><span class="op">(</span><span class="va">dlf</span>, <span class="st">"time"</span>, <span class="va">y_vars</span>, <span class="st">"points"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
+<span><span class="fu"><a href="../reference/plot_dlf.html">plot_dlf</a></span><span class="op">(</span><span class="va">dlf</span>, <span class="st">"time"</span>, <span class="va">y_vars</span>, <span class="st">"points"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Ignoring unknown labels:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">fill</span> : <span style="color: #0000BB;">"sim"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">colour</span> : <span style="color: #0000BB;">"sim"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">shape</span> : <span style="color: #0000BB;">"sim"</span></span></span>
+<span><span class="co">#&gt; Ignoring unknown labels:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">fill</span> : <span style="color: #0000BB;">"sim"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">colour</span> : <span style="color: #0000BB;">"sim"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">shape</span> : <span style="color: #0000BB;">"sim"</span></span></span></code></pre></div>
+<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" alt="" width="672"></p>
 <p>If we only want to plot a part of the time period we can use
 <code>subset_dlf</code></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">summer95</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subset_dlf.html">subset_dlf</a></span><span class="op">(</span><span class="va">dlf</span>, <span class="st">"1995-06-01"</span>, <span class="st">"1995-08-31"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/plot_dlf.html">plot_dlf</a></span><span class="op">(</span><span class="va">summer95</span>, <span class="st">"time"</span>, <span class="va">y_vars</span>, <span class="st">"lines"</span>, title_suffix<span class="op">=</span><span class="st">" - Summer of '95"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
+<span><span class="fu"><a href="../reference/plot_dlf.html">plot_dlf</a></span><span class="op">(</span><span class="va">summer95</span>, <span class="st">"time"</span>, <span class="va">y_vars</span>, <span class="st">"lines"</span>, title_suffix<span class="op">=</span><span class="st">" - Summer of '95"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Ignoring unknown labels:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">fill</span> : <span style="color: #0000BB;">"sim"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">colour</span> : <span style="color: #0000BB;">"sim"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">shape</span> : <span style="color: #0000BB;">"sim"</span></span></span>
+<span><span class="co">#&gt; Ignoring unknown labels:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">fill</span> : <span style="color: #0000BB;">"sim"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">colour</span> : <span style="color: #0000BB;">"sim"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">shape</span> : <span style="color: #0000BB;">"sim"</span></span></span></code></pre></div>
+<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="672"></p>
 </div>
 <div class="section level2">
 <h2 id="plotting-daisy-spawn-output">Plotting Daisy spawn output<a class="anchor" aria-label="anchor" href="#plotting-daisy-spawn-output"></a>
@@ -209,7 +225,7 @@ for us and we can directly index the list of dlfs</p>
 <span><span class="co">#&gt;  [8] "leaf_DM" "sorg_DM" "stem_N"  "dead_N"  "leaf_N"  "sorg_N"  "WStress"</span></span>
 <span><span class="co">#&gt; [15] "NStress" "WP_ET"   "HI"      "sim"     "time"</span></span>
 <span><span class="fu"><a href="../reference/plot_dlf.html">plot_dlf</a></span><span class="op">(</span><span class="va">dlfs</span><span class="op">$</span><span class="va">Harvest</span>, <span class="st">"time"</span>, <span class="st">"leaf_DM"</span>, <span class="st">"lines"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
+<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" alt="" width="672"></p>
 <p>We can of course also plot the other log type</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">dlfs</span><span class="op">$</span><span class="va">`FWater200-Y`</span><span class="op">@</span><span class="va">data</span><span class="op">)</span></span>
@@ -223,7 +239,7 @@ for us and we can directly index the list of dlfs</p>
 <span><span class="co">#&gt; [15] "Soil matrix water"            "Surface water"               </span></span>
 <span><span class="co">#&gt; [17] "sim"                          "time"</span></span>
 <span><span class="fu"><a href="../reference/plot_dlf.html">plot_dlf</a></span><span class="op">(</span><span class="va">dlfs</span><span class="op">$</span><span class="va">`FWater200-Y`</span>, <span class="st">"time"</span>, <span class="st">"Irrigation"</span>, <span class="st">"bar"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
+<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-13-1.png" class="r-plt" alt="" width="672"></p>
 </div>
 <div class="section level2">
 <h2 id="plotting-depth-distributed-output">Plotting depth distributed output<a class="anchor" aria-label="anchor" href="#plotting-depth-distributed-output"></a>
@@ -240,12 +256,12 @@ for us and we can directly index the list of dlfs</p>
 Instead you have to use <code>plot_dlf_depth</code></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_dlf_depth.html">plot_dlf_depth</a></span><span class="op">(</span><span class="va">dlf</span>, <span class="st">"q"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-15-1.png" width="672">
+<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-15-1.png" class="r-plt" alt="" width="672">
 By default <code>plot_dlf_depth</code> selects four time points at
 random. You can also pass the desired time points</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_dlf_depth.html">plot_dlf_depth</a></span><span class="op">(</span><span class="va">dlf</span>, <span class="st">"q"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1990-04-23"</span>, <span class="st">"1990-04-27"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-16-1.png" width="672"></p>
+<p><img src="daisy-02-plotting-dlfs_files/figure-html/unnamed-chunk-16-1.png" class="r-plt" alt="" width="672"></p>
 <p>Depth distributed data is often better visualized by animating it.
 This can be done with <code>animate_dlf</code>. Try running
 <code>example(animate_dlf)</code>.</p>
@@ -261,7 +277,7 @@ This can be done with <code>animate_dlf</code>. Try running
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>
