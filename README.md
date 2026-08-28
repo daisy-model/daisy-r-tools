@@ -52,7 +52,7 @@ The contents of the package can be listed with
 
 The call to `eaxmple(plot_dlf)` should produce a plot similar to this
 
-![Bar plots of four annualy logged variables from four different Daisy log files](inst/extdata/annual/Annual-FN/plot_annual_example.png)
+![Bar plots of four annually logged variables from four different Daisy log files](inst/extdata/annual/Annual-FN/plot_annual_example.png)
 
 ### Mass balance
 
@@ -87,6 +87,7 @@ Start `R` in base of repository. Then use devtools to load, check and install pa
 library(devtools)
 load_all()
 lint()
+spell_check()
 check(cran = TRUE)
 release()
 check_win_release()

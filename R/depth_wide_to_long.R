@@ -11,7 +11,7 @@
 #' @param depth_unit Unit of depth
 #' @return An S4 object of class Dlf
 #'
-#' The data of rhe returned Dlf object contains one row for each time/depth
+#' The data of the returned Dlf object contains one row for each time/depth
 #' combination.
 #'
 #' @export

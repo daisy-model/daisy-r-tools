@@ -13,8 +13,8 @@ write_dlf(dlf, path, sep = ",", include_dlf_header = FALSE)
 
 \item{sep}{Separator to use in csv file}
 
-\item{include_dlf_header}{If TRUE write the Dlf header to the begining of the
-csv file}
+\item{include_dlf_header}{If TRUE write the Dlf header to the beginning of
+the csv file}
 }
 \description{
 Write a dlf object to a file

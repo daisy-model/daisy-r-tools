@@ -30,7 +30,7 @@ depth_wide_to_long(
 \value{
 An S4 object of class Dlf
 
-The data of rhe returned Dlf object contains one row for each time/depth
+The data of the returned Dlf object contains one row for each time/depth
 combination.
 }
 \description{

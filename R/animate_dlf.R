@@ -1,4 +1,4 @@
-#' Animate a depth dependent timeseries from a Dlf file
+#' Animate a depth dependent time series from a Dlf file
 #'
 #' @param dlf An S4 object of class Dlf
 #' @param x_var Name of variable on x axis. If NULL assume it is the column that

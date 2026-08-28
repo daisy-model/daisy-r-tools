@@ -3,8 +3,8 @@
 #' @param dlf Dlf object to write
 #' @param path Output path to write to
 #' @param sep Separator to use in csv file
-#' @param include_dlf_header If TRUE write the Dlf header to the begining of the
-#' csv file
+#' @param include_dlf_header If TRUE write the Dlf header to the beginning of
+#' the csv file
 #'
 #' @export
 write_dlf <- function(dlf, path, sep=",", include_dlf_header=FALSE) {
