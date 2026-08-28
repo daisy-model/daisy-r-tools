@@ -117,3 +117,32 @@ test_that("mass_balance_summary returns documented totals for a single Dlf", {
     expect_equal(summary$Balance$FinalContent, 11)
     expect_equal(summary$Balance$Balance, -1)
 })
+
+test_that("mass_balance_summary returns a list of summaries for list input", {
+    dlf_a <- make_test_dlf(
+        data.frame(inflow=c(1, 2), outflow=c(0.5, 0.5), storage=c(10, 11)),
+        units=c(inflow="kg", outflow="kg", storage="kg")
+    )
+    dlf_b <- make_test_dlf(
+        data.frame(inflow=c(2, 3), outflow=c(1, 1), storage=c(20, 22)),
+        units=c(inflow="kg", outflow="kg", storage="kg")
+    )
+
+    summary <- mass_balance_summary(
+        list(a=dlf_a, b=dlf_b),
+        input="inflow",
+        output="outflow",
+        content="storage"
+    )
+
+    expect_type(summary, "list")
+    expect_named(summary, c("a", "b"), ignore.order=FALSE)
+    expect_named(summary$a,
+                 c("Inputs", "Outputs", "InitialContent", "FinalContent",
+                   "Balance"),
+                 ignore.order=FALSE)
+    expect_named(summary$b,
+                 c("Inputs", "Outputs", "InitialContent", "FinalContent",
+                   "Balance"),
+                 ignore.order=FALSE)
+})

@@ -25,19 +25,22 @@ mass_balance <- function(dlfs, input, output, content,
 # nolint end
     if (is.list(dlfs)) {
         lapply(dlfs, function(dlf) {
-            mass_balance(dlf, input, output, content)
+            mass_balance(dlf, input, output, content,
+                         use_initial_content_as_reference)
         })
     } else {
-        unit <- unique(unlist(dlfs@units[, c(input, output, content)]))
+        unit <- unique(unlist(
+            dlfs@units[, c(input, output, content), drop=FALSE]
+        ))
         if (length(unit) > 1) {
             stop(paste("Unit mismatch:", unit))
         }
         data <- dlfs@data
-        input_sum <- cumsum(row_sum(data[, input]))
-        output_sum <- cumsum(row_sum(data[, output]))
-        content_sum <- row_sum(data[, content])
+        input_sum <- cumsum(row_sum(data[, input, drop=FALSE]))
+        output_sum <- cumsum(row_sum(data[, output, drop=FALSE]))
+        content_sum <- row_sum(data[, content, drop=FALSE])
         if (use_initial_content_as_reference) {
-            content_sum <- content_sum - sum(data[1, content])
+            content_sum <- content_sum - sum(data[1, content, drop=FALSE])
         }
         balance <- content_sum + output_sum - input_sum
         data <- cbind(data, data.frame(input_sum=input_sum,
@@ -125,24 +128,26 @@ plot_mass_balance <- function(dlfs, x_var, title_suffix="") {
 mass_balance_summary <- function(dlfs, input, output, content) {
     if (is.list(dlfs)) {
         lapply(dlfs, function(dlf) {
-            mass_balance(dlf, input, output, content)
+            mass_balance_summary(dlf, input, output, content)
         })
     } else {
-        unit <- unique(unlist(dlfs@units[, c(input, output, content)]))
+        unit <- unique(unlist(
+            dlfs@units[, c(input, output, content), drop=FALSE]
+        ))
         if (length(unit) > 1) {
             stop(paste("Unit mismatch:", unit))
         }
         result <- list()
-        input_sum <- col_sum(dlfs@data[, input])
+        input_sum <- col_sum(dlfs@data[, input, drop=FALSE])
         input_total <- sum(input_sum)
         result$Inputs <- c(input_sum, Total=input_total)
-        output_sum <- col_sum(dlfs@data[, output])
+        output_sum <- col_sum(dlfs@data[, output, drop=FALSE])
         output_total <- sum(output_sum)
         result$Outputs <- c(output_sum, Total=output_total)
         in_out_delta <- output_total - input_total
-        initial_content <- dlfs@data[1, content]
+        initial_content <- dlfs@data[1, content, drop=FALSE]
         initial_content_total <- sum(initial_content)
-        final_content <- dlfs@data[nrow(dlfs@data), content]
+        final_content <- dlfs@data[nrow(dlfs@data), content, drop=FALSE]
         final_content_total <- sum(final_content)
         content_delta <- final_content_total - initial_content_total
         result$InitialContent <- as.data.frame(c(initial_content,
@@ -162,7 +167,7 @@ mass_balance_summary <- function(dlfs, input, output, content) {
 
 row_sum <- function(df) {
     if (ncol(df) < 2) {
-        df
+        df[[1]]
     } else {
         rowSums(df)
     }
@@ -170,7 +175,7 @@ row_sum <- function(df) {
 
 col_sum <- function(df) {
     if (ncol(df) < 2) {
-        sum(df)
+        setNames(sum(df[[1]]), colnames(df))
     } else {
         colSums(df)
     }
