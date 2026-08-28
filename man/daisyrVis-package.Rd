@@ -6,7 +6,7 @@
 \alias{daisyrVis-package}
 \title{daisyrVis: Visualization of Daisy Log Files}
 \description{
-Functions for visualizing log files from Daisy simulations.
+Provides tools for reading, transforming, and visualizing log files produced by Daisy simulations. Includes support for importing '.dlf' output files, reshaping depth-dependent and time-series data, and creating static and interactive plots for exploratory analysis and comparison of simulation results.
 }
 \seealso{
 Useful links:
