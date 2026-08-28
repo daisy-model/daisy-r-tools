@@ -93,3 +93,30 @@ test_that("write_dlf writes units and optional header information", {
     expect_true(any(grepl("year", lines_with_header, fixed=TRUE)))
     expect_true(any(grepl("value", lines_with_header, fixed=TRUE)))
 })
+
+test_that("write_dlf roundtrips a Dlf through read_dlf", {
+    source_path <- extdata_path(
+        "annual", "Annual-FN", "HourlyP-Annual-FN-2-2b.dlf"
+    )
+    roundtrip_path <- tempfile(fileext=".dlf")
+
+    original <- read_dlf(
+        source_path,
+        mode="file",
+        convert_time=FALSE,
+        convert_depth=FALSE
+    )
+    suppressWarnings(
+        write_dlf(original, roundtrip_path, include_dlf_header=TRUE)
+    )
+    restored <- read_dlf(
+        roundtrip_path,
+        mode="file",
+        convert_time=FALSE,
+        convert_depth=FALSE
+    )
+
+    expect_equal(restored@header, original@header)
+    expect_equal(restored@units, original@units)
+    expect_equal(restored@data, original@data)
+})
