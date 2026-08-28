@@ -32,14 +32,14 @@ test_that("dir_names_to_columns stores one directory level in the data slot", {
     expect_type(result, "list")
     expect_equal(names(result), c("log", "log"))
     expect_true(all(vapply(result, function(dlf) "dir" %in% colnames(dlf@data),
-                            logical(1))))
+                           logical(1))))
     expect_equal(result[[1]]$dir[1], "sim_a")
     expect_equal(result[[2]]$dir[1], "sim_b")
     expect_true(all(vapply(result, function(dlf) dlf@units$dir == "",
-                            logical(1))))
+                           logical(1))))
 })
 
-test_that("merge_dlfs merges same-schema Dlfs and tracks source names by default", {
+test_that("merge_dlfs merges same-schema Dlfs and tracks source names", {
     dlf_a <- make_test_dlf(
         data.frame(year=1990, value=1),
         units=c(year="", value="kg")

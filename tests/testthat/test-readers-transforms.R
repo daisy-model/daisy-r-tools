@@ -27,6 +27,14 @@ test_that("read_dlf_file parses headers, column names, and units", {
     expect_equal(dlf$Crop_rate..AT..10, 1.5)
 })
 
+test_that("read_dlf_file preserves header values containing colons", {
+    path <- extdata_path("annual", "Annual-FN", "HourlyP-Annual-FN-2-2b.dlf")
+
+    dlf <- read_dlf_file(path)
+
+    expect_equal(dlf@header$RUN, "Mon Aug 28 16:37:22 2023")
+})
+
 test_that("read_dlf supports documented file, directory, and spawn modes", {
     root <- tempfile("dlf-tree-")
     dir.create(root)
@@ -137,7 +145,7 @@ test_that("daisy_time_to_timestamp works for single Dlfs and lists", {
                  ignore.order=FALSE)
 })
 
-test_that("daisy_time_to_timestamp errors when explicit time columns are missing", {
+test_that("daisy_time_to_timestamp errors when time columns are missing", {
     dlf <- make_test_dlf(
         data.frame(year=2012, month=3, value=10),
         units=c(year="", month="", value="kg")

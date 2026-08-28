@@ -24,7 +24,8 @@ Imports:
     utils,
     plotly,
     data.table,
-    tidyr
+    tidyr,
+    tidyselect
 Suggests: 
     knitr,
     rmarkdown,

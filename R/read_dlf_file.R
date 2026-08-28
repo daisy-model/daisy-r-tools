@@ -81,11 +81,13 @@ read_dlf_file_header <- function(dlf_file, lines_read) {
             if (startsWith(line, "dlf")) {
                 header[["info"]] <- line
             } else {
-                kv_pair <- strsplit(line, ":", fixed=TRUE)[[1]]
-                k <- trimws(kv_pair[1])
-                v <- trimws(kv_pair[2])
-                if (is.na(v)) {
+                separator_pos <- regexpr(":", line, fixed=TRUE)[[1]]
+                if (separator_pos < 0) {
+                    k <- trimws(line)
                     v <- ""
+                } else {
+                    k <- trimws(substr(line, 1, separator_pos - 1))
+                    v <- trimws(substr(line, separator_pos + 1, nchar(line)))
                 }
                 if (k %in% names(header)) {
                     header[k] <- paste(header[k], v, sep="\n")
