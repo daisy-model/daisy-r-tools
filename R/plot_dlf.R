@@ -57,6 +57,8 @@ plot_dlf <- function(dlfs, x_var, y_vars, type="points", mode="auto",
                      legend_label=NULL) {
     if (is.character(type)) {
         geom <- get_geom_from_type(type)
+    } else {
+        geom <- type
     }
     if (mode == "auto") {
         mode <- guess_plot_mode(dlfs, group_col)
