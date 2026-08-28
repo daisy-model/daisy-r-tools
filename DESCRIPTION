@@ -1,6 +1,6 @@
 Package: daisytools
 Title: Tools for Working with Daisy Simulation Output
-Version: 0.0.4
+Version: 1.0.0
 Authors@R: 
     person("Silas", "Ørting", , "silas@di.ku.dk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3081-1547"))
