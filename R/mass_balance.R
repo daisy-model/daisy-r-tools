@@ -175,7 +175,7 @@ row_sum <- function(df) {
 
 col_sum <- function(df) {
     if (ncol(df) < 2) {
-        setNames(sum(df[[1]]), colnames(df))
+        stats::setNames(sum(df[[1]]), colnames(df))
     } else {
         colSums(df)
     }

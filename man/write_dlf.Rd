@@ -4,7 +4,7 @@
 \alias{write_dlf}
 \title{Write a dlf object to a file}
 \usage{
-write_dlf(dlf, path, sep = ",", include_dlf_header = FALSE)
+write_dlf(dlf, path, sep = "\\t", include_dlf_header = FALSE)
 }
 \arguments{
 \item{dlf}{Dlf object to write}
