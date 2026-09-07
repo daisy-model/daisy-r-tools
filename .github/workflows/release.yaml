@@ -83,7 +83,6 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-latest
           - macos-latest
           - windows-latest
 
@@ -117,7 +116,7 @@ jobs:
 
           result <- rcmdcheck::rcmdcheck(
             tarball,
-            args = "--as-cran",
+            args = c("--no-manual", "--as-cran"),
             error_on = "never"
           )
 
@@ -148,8 +147,82 @@ jobs:
             stop("R CMD check reported errors or warnings")
           }
 
+  manual-check:
+    needs: build
+    runs-on: ubuntu-latest
+    name: ubuntu-latest (release manual)
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.build.outputs.checkout_ref }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-tarball
+          path: dist
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-tinytex@v2
+        env:
+          TINYTEX_INSTALLER: TinyTeX
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck, local::.
+          needs: check
+
+      - name: Run R CMD check with manual on release tarball
+        shell: Rscript {0}
+        run: |
+          tarball <- Sys.glob(file.path("dist", "*.tar.gz"))
+          stopifnot(length(tarball) == 1)
+
+          result <- rcmdcheck::rcmdcheck(
+            tarball,
+            args = "--as-cran",
+            error_on = "never"
+          )
+
+          output <- list(
+            os = "ubuntu-latest",
+            r = paste(R.version$major, R.version$minor, sep = "."),
+            manual = TRUE,
+            errors = unname(result$errors),
+            warnings = unname(result$warnings),
+            notes = unname(result$notes)
+          )
+
+          saveRDS(output, "check-results-ubuntu-latest-manual.rds")
+
+      - name: Upload manual check results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: check-results-ubuntu-latest-manual
+          path: check-results-ubuntu-latest-manual.rds
+          if-no-files-found: error
+
+      - name: Fail on R CMD check errors or warnings
+        shell: Rscript {0}
+        run: |
+          result <- readRDS("check-results-ubuntu-latest-manual.rds")
+
+          if (length(result$errors) > 0 || length(result$warnings) > 0) {
+            stop("R CMD check reported errors or warnings")
+          }
+
   release:
-    needs: check
+    needs:
+      - build
+      - check
+      - manual-check
     runs-on: ubuntu-latest
 
     steps:
@@ -197,18 +270,26 @@ jobs:
             )
           }
 
+          label <- function(result) {
+            if (isTRUE(result$manual)) {
+              sprintf("%s, R %s (manual)", result$os, result$r)
+            } else {
+              sprintf("%s, R %s", result$os, result$r)
+            }
+          }
+
           writeLines(c(
             "## Test environments",
             "",
             unlist(lapply(results, function(result) {
-              sprintf("* %s, R %s", result$os, result$r)
+              sprintf("* %s", label(result))
             })),
             "",
             "## R CMD check results",
             "",
             unlist(lapply(results, function(result) {
               lines <- c(
-                sprintf("### %s", result$os),
+                sprintf("### %s", label(result)),
                 "",
                 result_line(result)
               )
