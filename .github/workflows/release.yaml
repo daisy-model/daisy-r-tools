@@ -157,6 +157,11 @@ jobs:
         with:
           ref: ${{ needs.build.outputs.checkout_ref }}
 
+      - name: Install tidy
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes tidy
+
       - uses: actions/download-artifact@v4
         with:
           name: release-tarball
