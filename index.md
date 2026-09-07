@@ -16,7 +16,7 @@ First install `devtools`
 install.packages('devtools')
 ```
 
-The try to install `daisytools`
+Then try to install `daisytools`
 
 ``` R
 devtools::install_git('https://github.com/daisy-model/daisy-r-tools')
@@ -68,7 +68,7 @@ example(animate_dlf)
 example(plot_mass_balance)
 ```
 
-The call to `eaxmple(plot_dlf)` should produce a plot similar to this
+The call to `example(plot_dlf)` should produce a plot similar to this
 
 ![Bar plots of four annually logged variables from four different Daisy
 log files](inst/extdata/annual/Annual-FN/plot_annual_example.png)
@@ -94,7 +94,7 @@ example(daisy_time_to_timestamp)
 
 ## Documentation
 
-Use the builtin help for documentation on each function. For a more
+Use the built-in help for documentation on each function. For a more
 tutorial like introduction go to
 <https://daisy-model.github.io/daisy-r-tools/> and browse the available
 articles.
