@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(daisyrVis)
+library(daisytools)
 ```
 There is a general plot function `plot_dlf` that handles both single files and list of files as returned by `read_dlf`.
 
@@ -27,7 +27,7 @@ There is a general plot function `plot_dlf` that handles both single files and l
 ## Plotting data from a directory of dlf files
 To get started we will read some dlf files with `read_dlf`
 ```{r}
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 dlfs <- read_dlf(file.path(data_dir, "annual"))
 names(dlfs)
 ```
@@ -88,7 +88,7 @@ plot_dlf(summer95, "time", y_vars, "lines", title_suffix=" - Summer of '95")
 
 To get started we will read some dlf files with `read_dlf`
 ```{r}
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daisy-spawn-like")
 dlfs <- read_dlf(path)
 names(dlfs)
@@ -109,7 +109,7 @@ plot_dlf(dlfs$`FWater200-Y`, "time", "Irrigation", "bar")
 ## Plotting depth distributed output
 To get started we will read a dlf file with `read_dlf`
 ```{r}
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daily/DailyP/DailyP-Daily-WaterFlux.dlf")
 dlf <- read_dlf(path)
 head(dlf)

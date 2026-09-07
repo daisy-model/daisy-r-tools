@@ -24,7 +24,7 @@ Balance.
 Mass balance summary for a set of specified variables
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "hourly/P2D-Daily-Soil_Chemical_110cm.dlf")
 dlf <- read_dlf(path)
 input <- c("In_Matrix", "In_Biopores", "External", "Transform", "Tillage")

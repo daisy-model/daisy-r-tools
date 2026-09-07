@@ -19,7 +19,7 @@ relative path to it
 Walk a directory tree and read all dlf files in it.
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 dlfs <- read_dlf_dir(file.path(data_dir, "annual"))
 print(names(dlfs))
 

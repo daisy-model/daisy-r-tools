@@ -19,7 +19,7 @@ basename of its original name
 Remove directory part of dlf name and store it in the data slot
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 dlfs <- read_dlf_dir(file.path(data_dir, "annual"))
 names(dlfs)
 dlfs <- dir_names_to_columns(dlfs)

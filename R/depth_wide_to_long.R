@@ -1,7 +1,7 @@
 #' Transform wide format time series to a long format time series
 #' It is assumed that dlf@data only contains `time_name` columns and depth
 #' columns with the format
-#'   <var_name>_<depth-below-surface>
+#'   `<var_name>_<depth-below-surface>`
 #' e.g. "q_100"
 #'
 #' @param dlf An S4 object of class Dlf or a list of Dlf objects
@@ -11,13 +11,13 @@
 #' @param depth_unit Unit of depth
 #' @return An S4 object of class Dlf
 #'
-#' The data of rhe returned Dlf object contains one row for each time/depth
+#' The data of the returned Dlf object contains one row for each time/depth
 #' combination.
 #'
 #' @export
 #'
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' path <- file.path(data_dir, "daily/DailyP/DailyP-Daily-WaterFlux.dlf")
 #' dlf <- read_dlf(path, convert_depth=FALSE)
 #' dlf@data[1,]
@@ -45,9 +45,14 @@ depth_wide_to_long <- function(dlf, var_name, time_name="time",
         colnames(df)[varying_idx] <- varying
         ## Reshape the data. Base reshape is slow and tidyr::pivot_longer does
         ## what we want out of the box
-        data <- tidyr::pivot_longer(df, varying, names_to=depth_name,
-                                    values_to=var_name, names_prefix=prefix,
-                                    names_transform=as.double)
+        data <- tidyr::pivot_longer(
+            df,
+            tidyselect::all_of(varying),
+            names_to=depth_name,
+            values_to=var_name,
+            names_prefix=prefix,
+            names_transform=as.double
+        )
         ## The result from tidyr is a tibble. We should consider switching to
         ## tibble instead of data.frame, but for now we convert it to a
         ## data.frame

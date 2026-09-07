@@ -6,13 +6,13 @@
 #'
 #' header is list with everything in the dlf file before the data. key: value
 #' pairs from the header are stored as named components of the list.
-#' units is a data.framecontaining the units of the values in data.
+#' units is a data.frame containing the units of the values in data.
 #' data is a data.frame containing the logged values
 #'
 #' @export
 #'
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' path <- file.path(data_dir, "annual/Annual-FN/HourlyP-Annual-FN-2-2b.dlf")
 #' dlf <- read_dlf_file(path)
 #' slotNames(dlf)
@@ -81,11 +81,13 @@ read_dlf_file_header <- function(dlf_file, lines_read) {
             if (startsWith(line, "dlf")) {
                 header[["info"]] <- line
             } else {
-                kv_pair <- strsplit(line, ":", fixed=TRUE)[[1]]
-                k <- trimws(kv_pair[1])
-                v <- trimws(kv_pair[2])
-                if (is.na(v)) {
+                separator_pos <- regexpr(":", line, fixed=TRUE)[[1]]
+                if (separator_pos < 0) {
+                    k <- trimws(line)
                     v <- ""
+                } else {
+                    k <- trimws(substr(line, 1, separator_pos - 1))
+                    v <- trimws(substr(line, separator_pos + 1, nchar(line)))
                 }
                 if (k %in% names(header)) {
                     header[k] <- paste(header[k], v, sep="\n")

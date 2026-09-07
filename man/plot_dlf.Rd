@@ -39,7 +39,7 @@ type="bar + lines + points"
 
 If a function, then it is passed a ggplot2 object and it should add a geom to
 the object and return it. For example,
-type=function(gg) { gg + geom_point() }}
+\code{type=function(gg) { gg + geom_point() }}}
 
 \item{mode}{One of 'auto', 'single', 'grouped', 'list'. Default is
 'auto'.
@@ -69,7 +69,7 @@ Plot one or more variables from one or more Dlfs.
 Each variable is plotted in a separate subplot.
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual/Annual-FN")
 dlfs <- read_dlf(path)
 

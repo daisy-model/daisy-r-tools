@@ -53,7 +53,7 @@ file.
 Read a dlf file (Daisy log file) or a directory of dlf files
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual/Annual-FN/HourlyP-Annual-FN-2-2b.dlf")
 dlf <- read_dlf(path)
 slotNames(dlf)

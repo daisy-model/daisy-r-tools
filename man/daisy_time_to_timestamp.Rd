@@ -43,7 +43,7 @@ the corresponding POSIXct timestamp
 Transform daisy time columns to a single timestamp
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, 'daily/DailyP/DailyP-Daily-WaterFlux.dlf')
 dlf <- read_dlf(path)
 dlf@data[1,]

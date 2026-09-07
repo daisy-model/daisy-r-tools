@@ -5,7 +5,7 @@
 \title{Transform wide format time series to a long format time series
 It is assumed that dlf@data only contains \code{time_name} columns and depth
 columns with the format
-<var_name>_\if{html}{\out{<depth-below-surface>}}
+\verb{<var_name>_<depth-below-surface>}
 e.g. "q_100"}
 \usage{
 depth_wide_to_long(
@@ -30,18 +30,18 @@ depth_wide_to_long(
 \value{
 An S4 object of class Dlf
 
-The data of rhe returned Dlf object contains one row for each time/depth
+The data of the returned Dlf object contains one row for each time/depth
 combination.
 }
 \description{
 Transform wide format time series to a long format time series
 It is assumed that dlf@data only contains \code{time_name} columns and depth
 columns with the format
-<var_name>_\if{html}{\out{<depth-below-surface>}}
+\verb{<var_name>_<depth-below-surface>}
 e.g. "q_100"
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daily/DailyP/DailyP-Daily-WaterFlux.dlf")
 dlf <- read_dlf(path, convert_depth=FALSE)
 dlf@data[1,]

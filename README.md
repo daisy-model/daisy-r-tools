@@ -1,50 +1,50 @@
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/daisy-model/daisyrVis/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/daisy-model/daisyrVis/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/daisy-model/daisy-r-tools/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/daisy-model/daisy-r-tools/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-# daisyrVis
+# daisytools
 A suite of visualization tools for Daisy log files written in R.
 
 ## Installation
-`daisyrVis` is currently only available from github. You need Rtools to build the package. If not already installed, you can install it with your package manager or from https://cran.r-project.org. You can then use `devtools` to install `daisyrVis`. Depending on your platform, you might need to install `git`.
+`daisytools` is currently only available from github. You need Rtools to build the package. If not already installed, you can install it with your package manager or from https://cran.r-project.org. You can then use `devtools` to install `daisytools`. Depending on your platform, you might need to install `git`.
 
 First install `devtools`
 
     install.packages('devtools')
 
-The try to install `daisyrVis`
+The try to install `daisytools`
 
-    devtools::install_git('https://github.com/daisy-model/daisyrVis')
+    devtools::install_git('https://github.com/daisy-model/daisy-r-tools')
 
 If this fails try to install `git2r`
 
     install.packages('git2r')
 
-and install `daisyrVis` again
+and install `daisytools` again
 
-    devtools::install_git('https://github.com/daisy-model/daisyrVis')
+    devtools::install_git('https://github.com/daisy-model/daisy-r-tools')
 
-If this fails open an issue and describe the problem https://github.com/daisy-model/daisyrVis/issues
+If this fails open an issue and describe the problem https://github.com/daisy-model/daisy-r-tools/issues
 
 
 You can remove the package with
 
-    remove.packages('daisyrVis')
+    remove.packages('daisytools')
 
 The contents of the package can be listed with
 
-    library(daisyrVis)
-    ls("package:daisyrVis")
+    library(daisytools)
+    ls("package:daisytools")
 
 ## Examples
 ### Reading dlf files
 
-    library(daisyrVis)
+    library(daisytools)
     example(read_dlf)
 
 ### Plotting
 
-    library(daisyrVis)
+    library(daisytools)
     example(plot_dlf)
     example(animate_dlf)
     example(plot_mass_balance)
@@ -52,23 +52,23 @@ The contents of the package can be listed with
 
 The call to `eaxmple(plot_dlf)` should produce a plot similar to this
 
-![Bar plots of four annualy logged variables from four different Daisy log files](inst/extdata/annual/Annual-FN/plot_annual_example.png)
+![Bar plots of four annually logged variables from four different Daisy log files](inst/extdata/annual/Annual-FN/plot_annual_example.png)
 
 ### Mass balance
 
-    library(daisyrVis)
+    library(daisytools)
     example(mass_balance)
     example(mass_balance_summary)
 
 ### Utility functions
 
-    library(daisyrVis)
+    library(daisytools)
     example(subset_dlf)
     example(daisy_time_to_timestamp)
 
 
 ## Documentation
-Use the builtin help for documentation on each function. For a more tutorial like introduction go to https://daisy-model.github.io/daisyrVis/ and browse the available articles.
+Use the builtin help for documentation on each function. For a more tutorial like introduction go to https://daisy-model.github.io/daisy-r-tools/ and browse the available articles.
 
 ## Development
 Follows https://r-pkgs.org/
@@ -78,5 +78,20 @@ Start `R` in base of repository. Then use devtools to load, check and install pa
     library(devtools)
     load_all()
     lint()
-    check()
+    check(cran = TRUE)
     install()
+
+
+## Release
+```{R}
+library(devtools)
+load_all()
+lint()
+spell_check()
+check(cran = TRUE)
+release()
+check_win_release()
+check_win_oldrelease()
+
+submit_cran()
+```

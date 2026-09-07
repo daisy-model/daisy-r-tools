@@ -17,16 +17,16 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(daisyrVis)
+library(daisytools)
 ```
 
 Daisy log files (.dlf) can be read with `read_dlf`. `read_dlf` can read a single dlf file, a directory tree of dlf files produced by the daisy spawn program, or a directory tree of dlf files in any order. When called with just a path the function will automatically guess how it should process the path. You can also explicitly control how the path is processed by setting the mode parameter.
 
 ## Reading a single dlf file
-We start by reading a single dlf file and inspect the contents. We use the Soil chemical log that is bundled with `daisyrVis`.
+We start by reading a single dlf file and inspect the contents. We use the Soil chemical log that is bundled with `daisytools`.
 
 ```{r}
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "hourly/P2D-Daily-Soil_Chemical_110cm.dlf")
 dlf <- read_dlf(path)
 head(dlf)
@@ -59,7 +59,7 @@ dlf[[1, "year"]]
 ## Reading a depth distributed output
 Some log files contain the distribution of a variable over depth and time. By default, these are detected and converted automatically by `read_dlf`
 ```{r}
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daily/DailyP/DailyP-Daily-WaterFlux.dlf")
 dlf <- read_dlf(path)
 head(dlf)
@@ -71,9 +71,9 @@ head(dlf@data)
 ```
 
 ## Reading Daisy spawn output
-Daisy spawn produces a directory hierarchy where each directory contains the same log files. We use the Daisy spawn outputs that are bundled with `daisyrVis`.
+Daisy spawn produces a directory hierarchy where each directory contains the same log files. We use the Daisy spawn outputs that are bundled with `daisytools`.
 ```{r}
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daisy-spawn-like")
 list.files(path, recursive=TRUE)
 ```
@@ -96,9 +96,9 @@ unique(dlfs[[name]]$sim)
 ```
 
 ## Reading a directory with dlf files
-We use the tracer and field nitrogen logs that are bundled with `daisyrVis` and read them with `read_dlf_dir`
+We use the tracer and field nitrogen logs that are bundled with `daisytools` and read them with `read_dlf_dir`
 ```{r}
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual")
 list.files(path, pattern=".*dlf", recursive=TRUE)
 ```
@@ -128,7 +128,7 @@ dlfs[[name]]@header
 ### Controlling which files are included
 `read_dlf` takes an optional pattern parameter that is used for modes "spawn" and "dir" and controls which files are included. By default all files with the suffix `.dlf` are included. If we only want to read files ending with `2b.dlf`, we can do
 ```{r}
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual")
 dlfs <- read_dlf(path, pattern=".*2b\\.dlf")
 names(dlfs)

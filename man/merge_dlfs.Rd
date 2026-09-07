@@ -18,7 +18,7 @@ A Dlf object with the data of the dlfs merged into a single dlf.
 Merge a list of Dlfs
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 dlfs <- read_dlf_dir(file.path(data_dir, "annual"))
 dlfs <- dlfs[startsWith(names(dlfs), "Annual-FN")]
 dlfs <- dir_names_to_columns(dlfs)

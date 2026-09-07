@@ -2,7 +2,7 @@
 % Please edit documentation in R/animate_dlf.R
 \name{animate_dlf}
 \alias{animate_dlf}
-\title{Animate a depth dependent timeseries from a Dlf file}
+\title{Animate a depth dependent time series from a Dlf file}
 \usage{
 animate_dlf(dlf, x_var = NULL, y_var = "z", time_var = "time")
 }
@@ -20,10 +20,10 @@ is not y_var or time_var}
 A plotly figure
 }
 \description{
-Animate a depth dependent timeseries from a Dlf file
+Animate a depth dependent time series from a Dlf file
 }
 \examples{
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daily/DailyP/DailyP-Daily-WaterFlux.dlf")
 dlf <- read_dlf(path)
 animate_dlf(dlf, "q")

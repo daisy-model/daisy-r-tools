@@ -1,5 +1,5 @@
 #' Plot one or more timepoints from one or more dlfs containing depth dependent
-#' timeseries
+#' time series
 #'
 #' @param dlfs An S4 object of class Dlf or a list of Dlf objects
 #' @param x_var Name of variable on x axis. If NULL assume it is the column that

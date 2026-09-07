@@ -18,7 +18,7 @@
 #'
 #' If a function, then it is passed a ggplot2 object and it should add a geom to
 #' the object and return it. For example,
-#'     type=function(gg) { gg + geom_point() }
+#'     `type=function(gg) { gg + geom_point() }`
 #' @param mode One of 'auto', 'single', 'grouped', 'list'. Default is
 #' 'auto'.
 #' If 'auto' try to guess the mode.
@@ -37,7 +37,7 @@
 #'         variable, it is not possible to add further data to it.
 #' @export
 #' @examples
-#' data_dir <- system.file("extdata", package="daisyrVis")
+#' data_dir <- system.file("extdata", package="daisytools")
 #' path <- file.path(data_dir, "annual/Annual-FN")
 #' dlfs <- read_dlf(path)
 #'
@@ -57,6 +57,8 @@ plot_dlf <- function(dlfs, x_var, y_vars, type="points", mode="auto",
                      legend_label=NULL) {
     if (is.character(type)) {
         geom <- get_geom_from_type(type)
+    } else {
+        geom <- type
     }
     if (mode == "auto") {
         mode <- guess_plot_mode(dlfs, group_col)

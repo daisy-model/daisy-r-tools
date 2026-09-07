@@ -3,7 +3,7 @@
 \name{plot_dlf_depth}
 \alias{plot_dlf_depth}
 \title{Plot one or more timepoints from one or more dlfs containing depth dependent
-timeseries}
+time series}
 \usage{
 plot_dlf_depth(
   dlfs,
@@ -46,5 +46,5 @@ ggplot2 object
 }
 \description{
 Plot one or more timepoints from one or more dlfs containing depth dependent
-timeseries
+time series
 }
