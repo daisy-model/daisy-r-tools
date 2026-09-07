@@ -133,8 +133,26 @@
 <div class="section level2">
 <h2 id="release">Release<a class="anchor" aria-label="anchor" href="#release"></a>
 </h2>
-<p>```{R} library(devtools) load_all() lint() spell_check() check(cran = TRUE) release() check_win_release() check_win_oldrelease()</p>
-<p>submit_cran() ```</p>
+<p>Bump version and remember to update NEWS.md.</p>
+<div class="section level3">
+<h3 id="before-pr">Before PR<a class="anchor" aria-label="anchor" href="#before-pr"></a>
+</h3>
+<p>The release workflow is partly automated. Before opening a PR ensure that the following works without issues <code>{R} devtools::load_all() devtools::lint(cache = FALSE) devtools::spell_check() devtools::check(cran = TRUE)</code></p>
+</div>
+<div class="section level3">
+<h3 id="after-pr">After PR<a class="anchor" aria-label="anchor" href="#after-pr"></a>
+</h3>
+<p>After opening a PR, ensure that all checks run without issues. Then manually do <code>{R} devtools::check_win_release() devtools::check_win_oldrelease()</code> Wait for results by mail and verify that everything works.</p>
+</div>
+<div class="section level3">
+<h3 id="after-merge-into-main">After merge into main<a class="anchor" aria-label="anchor" href="#after-merge-into-main"></a>
+</h3>
+<p>Tag the current main with current version and push to start the release workflow. This will build the tarball for CRAN and create a pre-release with the tarball and a generated <code>cran-comments-&lt;tag&gt;.md</code> file attached.</p>
+<pre><code>git tag v1.0.0
+git push origin v1.0.0</code></pre>
+<p>Download the tarball and <code>cran-comments-&lt;tag&gt;.md</code> from the pre-release. Review the comments file and decide if anything must be addressed before submission. Add any extra information (e.g. “This is a new submission”) and ensure the file is understandable.</p>
+<p>Submit the downloaded tarball through the CRAN web form at <a href="https://cran.r-project.org/submit.html" class="external-link uri">https://cran.r-project.org/submit.html</a> and paste the contents of the reviewed <code>cran-comments-&lt;tag&gt;.md</code> file into the submission comments field. Once CRAN submission is accepted remove the pre-release tag.</p>
+</div>
 </div>
 </div>
 

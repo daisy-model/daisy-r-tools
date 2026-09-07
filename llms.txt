@@ -116,10 +116,39 @@ install()
 
 ## Release
 
-\`\`\`{R} library(devtools) load_all() lint() spell_check() check(cran =
-TRUE) release() check_win_release() check_win_oldrelease()
+Bump version and remember to update NEWS.md.
 
-submit_cran() \`\`\`
+### Before PR
+
+The release workflow is partly automated. Before opening a PR ensure
+that the following works without issues
+`{R} devtools::load_all() devtools::lint(cache = FALSE) devtools::spell_check() devtools::check(cran = TRUE)`
+
+### After PR
+
+After opening a PR, ensure that all checks run without issues. Then
+manually do
+`{R} devtools::check_win_release() devtools::check_win_oldrelease()`
+Wait for results by mail and verify that everything works.
+
+### After merge into main
+
+Tag the current main with current version and push to start the release
+workflow. This will build the tarball for CRAN and create a pre-release
+with the tarball and a generated `cran-comments-<tag>.md` file attached.
+
+    git tag v1.0.0
+    git push origin v1.0.0
+
+Download the tarball and `cran-comments-<tag>.md` from the pre-release.
+Review the comments file and decide if anything must be addressed before
+submission. Add any extra information (e.g. “This is a new submission”)
+and ensure the file is understandable.
+
+Submit the downloaded tarball through the CRAN web form at
+<https://cran.r-project.org/submit.html> and paste the contents of the
+reviewed `cran-comments-<tag>.md` file into the submission comments
+field. Once CRAN submission is accepted remove the pre-release tag.
 
 # Package index
 
