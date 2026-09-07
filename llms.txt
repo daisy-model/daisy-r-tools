@@ -135,9 +135,10 @@ Wait for results by mail and verify that everything works.
 
 Tag the current main with current version and push to start the release
 workflow. This will build the tarball for CRAN, run
-`R CMD check --as-cran` on that exact tarball on Ubuntu, macOS and
-Windows, and create a pre-release with the tarball and a generated
-`cran-comments-<tag>.md` file attached.
+`R CMD check --no-manual --as-cran` on that exact tarball on macOS and
+Windows, run a separate Ubuntu `R CMD check --as-cran` with TinyTeX to
+verify that the PDF manual builds, and create a pre-release with the
+tarball and a generated `cran-comments-<tag>.md` file attached.
 
     git tag v1.0.0
     git push origin v1.0.0
