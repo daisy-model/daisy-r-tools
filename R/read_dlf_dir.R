@@ -80,7 +80,7 @@ dir_names_to_columns <- function(dlfs, column_name_prefix=NULL) {
     if (is.null(column_name_prefix)) {
         column_name_prefix <- "dir"
     }
-    dlfs <- lapply(seq_len(length(dirs)), function(idx) {
+    dlfs <- lapply(seq_along(dirs), function(idx) {
         sub_dirs <- strsplit(dirs[[idx]], "/", fixed=TRUE)
         num_sub_dirs <- length(sub_dirs)
         if (num_sub_dirs > 1) {
