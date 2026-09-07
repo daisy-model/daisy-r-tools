@@ -5,7 +5,7 @@
 \title{Transform wide format time series to a long format time series
 It is assumed that dlf@data only contains \code{time_name} columns and depth
 columns with the format
-<var_name>_\if{html}{\out{<depth-below-surface>}}
+\verb{<var_name>_<depth-below-surface>}
 e.g. "q_100"}
 \usage{
 depth_wide_to_long(
@@ -37,7 +37,7 @@ combination.
 Transform wide format time series to a long format time series
 It is assumed that dlf@data only contains \code{time_name} columns and depth
 columns with the format
-<var_name>_\if{html}{\out{<depth-below-surface>}}
+\verb{<var_name>_<depth-below-surface>}
 e.g. "q_100"
 }
 \examples{

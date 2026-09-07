@@ -1,7 +1,7 @@
 #' Transform wide format time series to a long format time series
 #' It is assumed that dlf@data only contains `time_name` columns and depth
 #' columns with the format
-#'   <var_name>_<depth-below-surface>
+#'   `<var_name>_<depth-below-surface>`
 #' e.g. "q_100"
 #'
 #' @param dlf An S4 object of class Dlf or a list of Dlf objects
