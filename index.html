@@ -147,10 +147,11 @@
 <div class="section level3">
 <h3 id="after-merge-into-main">After merge into main<a class="anchor" aria-label="anchor" href="#after-merge-into-main"></a>
 </h3>
-<p>Tag the current main with current version and push to start the release workflow. This will build the tarball for CRAN and create a pre-release with the tarball and a generated <code>cran-comments-&lt;tag&gt;.md</code> file attached.</p>
+<p>Tag the current main with current version and push to start the release workflow. This will build the tarball for CRAN, run <code>R CMD check --as-cran</code> on that exact tarball on Ubuntu, macOS and Windows, and create a pre-release with the tarball and a generated <code>cran-comments-&lt;tag&gt;.md</code> file attached.</p>
 <pre><code>git tag v1.0.0
 git push origin v1.0.0</code></pre>
-<p>Download the tarball and <code>cran-comments-&lt;tag&gt;.md</code> from the pre-release. Review the comments file and decide if anything must be addressed before submission. Add any extra information (e.g. “This is a new submission”) and ensure the file is understandable.</p>
+<p>If you need to refresh the tarball or generated comments for an existing pre-release, rerun the <code>Build Release Tarball</code> workflow manually and provide the existing tag.</p>
+<p>Download the tarball and <code>cran-comments-&lt;tag&gt;.md</code> from the pre-release. The comments file is generated from the GitHub release checks only, so review and add any release-specific information you want to include before submission.</p>
 <p>Submit the downloaded tarball through the CRAN web form at <a href="https://cran.r-project.org/submit.html" class="external-link uri">https://cran.r-project.org/submit.html</a> and paste the contents of the reviewed <code>cran-comments-&lt;tag&gt;.md</code> file into the submission comments field. Once CRAN submission is accepted remove the pre-release tag.</p>
 </div>
 </div>
