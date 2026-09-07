@@ -1,4 +1,5 @@
 ^LICENSE\.md$
+^cran-comments\.md$
 ^\.github$
 ^\.lintr$
 ^_pkgdown\.yml$
