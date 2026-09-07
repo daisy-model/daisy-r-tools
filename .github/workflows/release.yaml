@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to rebuild and republish release assets for
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -11,13 +17,34 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      tag_name: ${{ steps.release-tag.outputs.tag_name }}
+      checkout_ref: ${{ steps.release-tag.outputs.checkout_ref }}
 
     steps:
+      - name: Resolve release tag
+        id: release-tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG_NAME="${{ inputs.tag }}"
+            CHECKOUT_REF="refs/tags/${{ inputs.tag }}"
+          else
+            TAG_NAME="${GITHUB_REF_NAME}"
+            CHECKOUT_REF="${GITHUB_REF}"
+          fi
+
+          echo "tag_name=$TAG_NAME" >> "$GITHUB_OUTPUT"
+          echo "checkout_ref=$CHECKOUT_REF" >> "$GITHUB_OUTPUT"
+
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.release-tag.outputs.checkout_ref }}
 
       - name: Check tag matches package version
+        env:
+          TAG_NAME: ${{ steps.release-tag.outputs.tag_name }}
         run: |
-          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          TAG_VERSION="${TAG_NAME#v}"
           PKG_VERSION=$(grep '^Version:' DESCRIPTION | sed 's/^Version:[[:space:]]*//')
 
           [ "$TAG_VERSION" = "$PKG_VERSION" ] || {
@@ -40,27 +67,175 @@ jobs:
         run: |
           R CMD build .
 
-      - name: Prepare release assets
-        id: assets
+      - name: Upload release tarball
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-tarball
+          path: "*.tar.gz"
+          if-no-files-found: error
+
+  check:
+    needs: build
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }} (release)
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.build.outputs.checkout_ref }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-tarball
+          path: dist
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck, local::.
+          needs: check
+
+      - name: Run R CMD check on release tarball
+        shell: Rscript {0}
         run: |
-          TARBALL=$(ls -1 *.tar.gz | head -1)
-          COMMENTS="cran-comments-${GITHUB_REF_NAME}.md"
+          tarball <- Sys.glob(file.path("dist", "*.tar.gz"))
+          stopifnot(length(tarball) == 1)
 
-          mkdir release-assets
-          cp "$TARBALL" "release-assets/$TARBALL"
+          result <- rcmdcheck::rcmdcheck(
+            tarball,
+            args = "--as-cran",
+            error_on = "never"
+          )
 
-          {
-            printf "<!-- Generated for %s -->\n\n" "$GITHUB_REF_NAME"
-            cat cran-comments.md
-          } > "release-assets/$COMMENTS"
+          output <- list(
+            os = "${{ matrix.os }}",
+            r = paste(R.version$major, R.version$minor, sep = "."),
+            errors = unname(result$errors),
+            warnings = unname(result$warnings),
+            notes = unname(result$notes)
+          )
 
-          echo "tarball=release-assets/$TARBALL" >> "$GITHUB_OUTPUT"
-          echo "comments=release-assets/$COMMENTS" >> "$GITHUB_OUTPUT"
+          saveRDS(output, sprintf("check-results-%s.rds", "${{ matrix.os }}"))
+
+      - name: Upload check results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: check-results-${{ matrix.os }}
+          path: check-results-${{ matrix.os }}.rds
+          if-no-files-found: error
+
+      - name: Fail on R CMD check errors or warnings
+        shell: Rscript {0}
+        run: |
+          result <- readRDS(sprintf("check-results-%s.rds", "${{ matrix.os }}"))
+
+          if (length(result$errors) > 0 || length(result$warnings) > 0) {
+            stop("R CMD check reported errors or warnings")
+          }
+
+  release:
+    needs: check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-tarball
+          path: release-assets
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: check-results-*
+          path: check-results
+          merge-multiple: true
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Generate CRAN comments
+        env:
+          RELEASE_TAG: ${{ needs.build.outputs.tag_name }}
+        shell: Rscript {0}
+        run: |
+          result_files <- sort(Sys.glob(file.path("check-results", "*.rds")))
+          stopifnot(length(result_files) > 0)
+
+          results <- lapply(result_files, readRDS)
+          comments_file <- file.path(
+            "release-assets",
+            sprintf("cran-comments-%s.md", Sys.getenv("RELEASE_TAG"))
+          )
+
+          count_line <- function(entries, singular) {
+            n <- length(entries)
+            suffix <- if (n == 1) singular else paste0(singular, "s")
+            sprintf("%d %s", n, suffix)
+          }
+
+          result_line <- function(result) {
+            paste(
+              count_line(result$errors, "error"),
+              count_line(result$warnings, "warning"),
+              count_line(result$notes, "note"),
+              sep = " | "
+            )
+          }
+
+          writeLines(c(
+            "## Test environments",
+            "",
+            unlist(lapply(results, function(result) {
+              sprintf("* %s, R %s", result$os, result$r)
+            })),
+            "",
+            "## R CMD check results",
+            "",
+            unlist(lapply(results, function(result) {
+              lines <- c(
+                sprintf("### %s", result$os),
+                "",
+                result_line(result)
+              )
+
+              if (length(result$notes) > 0) {
+                lines <- c(
+                  lines,
+                  "",
+                  "Notes:",
+                  unlist(lapply(result$notes, function(note) {
+                    sprintf("* `%s`", gsub("`", "'",
+                      gsub("[[:space:]]+", " ", trimws(note))
+                    ))
+                  }))
+                )
+              }
+
+              c(lines, "")
+            }))
+          ), comments_file)
 
       - name: Create GitHub prerelease
         uses: softprops/action-gh-release@v3
         with:
+          tag_name: ${{ needs.build.outputs.tag_name }}
           prerelease: true
+          overwrite_files: true
           files: |
-            ${{ steps.assets.outputs.tarball }}
-            ${{ steps.assets.outputs.comments }}
+            release-assets/*.tar.gz
+            release-assets/cran-comments-${{ needs.build.outputs.tag_name }}.md
