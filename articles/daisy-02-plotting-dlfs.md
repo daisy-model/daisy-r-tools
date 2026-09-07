@@ -2,7 +2,7 @@
 
 ``` r
 
-library(daisyrVis)
+library(daisytools)
 ```
 
 There is a general plot function `plot_dlf` that handles both single
@@ -14,7 +14,7 @@ To get started we will read some dlf files with `read_dlf`
 
 ``` r
 
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 dlfs <- read_dlf(file.path(data_dir, "annual"))
 names(dlfs)
 #> [1] "Annual-FN/HourlyP-Annual-FN-2-2b"        
@@ -189,7 +189,7 @@ To get started we will read some dlf files with `read_dlf`
 
 ``` r
 
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daisy-spawn-like")
 dlfs <- read_dlf(path)
 names(dlfs)
@@ -236,7 +236,7 @@ To get started we will read a dlf file with `read_dlf`
 
 ``` r
 
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daily/DailyP/DailyP-Daily-WaterFlux.dlf")
 dlf <- read_dlf(path)
 head(dlf)

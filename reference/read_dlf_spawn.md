@@ -31,7 +31,7 @@ and the directory is stored in the column `col_name`
 ## Examples
 
 ``` r
-data_dir <- file.path(system.file("extdata", package="daisyrVis",
+data_dir <- file.path(system.file("extdata", package="daisytools",
                                   "daisy-spawn-like"))
 print(list.files(data_dir, recursive=TRUE))
 #>  [1] "Pig_JB1_Free/FWater200-Y.dlf"   "Pig_JB1_Free/Harvest.dlf"      

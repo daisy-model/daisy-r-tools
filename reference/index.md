@@ -2,88 +2,89 @@
 
 ## All functions
 
-- [`Dlf-class`](https://daisy-model.github.io/daisyrVis/reference/Dlf-class.md)
-  [`Dlf`](https://daisy-model.github.io/daisyrVis/reference/Dlf-class.md)
+- [`Dlf-class`](https://daisy-model.github.io/daisy-r-tools/reference/Dlf-class.md)
+  [`Dlf`](https://daisy-model.github.io/daisy-r-tools/reference/Dlf-class.md)
   : Class encapsulating Daisy log file (dlf) data
 
-- [`animate_dlf()`](https://daisy-model.github.io/daisyrVis/reference/animate_dlf.md)
-  : Animate a depth dependent timeseries from a Dlf file
+- [`animate_dlf()`](https://daisy-model.github.io/daisy-r-tools/reference/animate_dlf.md)
+  : Animate a depth dependent time series from a Dlf file
 
-- [`` `$`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisyrVis/reference/cash-Dlf-method.md)
+- [`` `$`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisy-r-tools/reference/cash-Dlf-method.md)
   : \$ indexing on the data part of the dlf
 
-- [`` `$<-`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisyrVis/reference/cash-set-Dlf-method.md)
+- [`` `$<-`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisy-r-tools/reference/cash-set-Dlf-method.md)
   : \$ assignment on the data part of the dlf
 
-- [`daisy_time_to_timestamp()`](https://daisy-model.github.io/daisyrVis/reference/daisy_time_to_timestamp.md)
+- [`daisy_time_to_timestamp()`](https://daisy-model.github.io/daisy-r-tools/reference/daisy_time_to_timestamp.md)
   : Transform daisy time columns to a single timestamp
 
-- [`depth_wide_to_long()`](https://daisy-model.github.io/daisyrVis/reference/depth_wide_to_long.md)
+- [`depth_wide_to_long()`](https://daisy-model.github.io/daisy-r-tools/reference/depth_wide_to_long.md)
   :
 
   Transform wide format time series to a long format time series It is
   assumed that dlf@data only contains `time_name` columns and depth
-  columns with the format \<var_name\>\_ e.g. "q_100"
+  columns with the format `<var_name>_<depth-below-surface>` e.g.
+  "q_100"
 
-- [`dir_names_to_columns()`](https://daisy-model.github.io/daisyrVis/reference/dir_names_to_columns.md)
+- [`dir_names_to_columns()`](https://daisy-model.github.io/daisy-r-tools/reference/dir_names_to_columns.md)
   : Remove directory part of dlf name and store it in the data slot
 
-- [`drop_dir_from_names()`](https://daisy-model.github.io/daisyrVis/reference/drop_dir_from_names.md)
+- [`drop_dir_from_names()`](https://daisy-model.github.io/daisy-r-tools/reference/drop_dir_from_names.md)
   : Remove directory part from dlf names
 
-- [`filter_dlfs()`](https://daisy-model.github.io/daisyrVis/reference/filter_dlfs.md)
+- [`filter_dlfs()`](https://daisy-model.github.io/daisy-r-tools/reference/filter_dlfs.md)
   : Filter a list of Dlfs
 
-- [`mass_balance()`](https://daisy-model.github.io/daisyrVis/reference/mass_balance.md)
+- [`mass_balance()`](https://daisy-model.github.io/daisy-r-tools/reference/mass_balance.md)
   : Calculate mass balance
 
-- [`mass_balance_summary()`](https://daisy-model.github.io/daisyrVis/reference/mass_balance_summary.md)
+- [`mass_balance_summary()`](https://daisy-model.github.io/daisy-r-tools/reference/mass_balance_summary.md)
   : Mass balance summary for a set of specified variables
 
-- [`merge_dlfs()`](https://daisy-model.github.io/daisyrVis/reference/merge_dlfs.md)
+- [`merge_dlfs()`](https://daisy-model.github.io/daisy-r-tools/reference/merge_dlfs.md)
   : Merge a list of Dlfs
 
-- [`plot_dlf()`](https://daisy-model.github.io/daisyrVis/reference/plot_dlf.md)
+- [`plot_dlf()`](https://daisy-model.github.io/daisy-r-tools/reference/plot_dlf.md)
   : Plot one or more variables from one or more Dlfs. Each variable is
   plotted in a separate subplot.
 
-- [`plot_dlf_depth()`](https://daisy-model.github.io/daisyrVis/reference/plot_dlf_depth.md)
+- [`plot_dlf_depth()`](https://daisy-model.github.io/daisy-r-tools/reference/plot_dlf_depth.md)
   : Plot one or more timepoints from one or more dlfs containing depth
-  dependent timeseries
+  dependent time series
 
-- [`plot_mass_balance()`](https://daisy-model.github.io/daisyrVis/reference/plot_mass_balance.md)
+- [`plot_mass_balance()`](https://daisy-model.github.io/daisy-r-tools/reference/plot_mass_balance.md)
   : Plot Dlf object with mass balance calculation in a control chart
 
-- [`read_dlf()`](https://daisy-model.github.io/daisyrVis/reference/read_dlf.md)
+- [`read_dlf()`](https://daisy-model.github.io/daisy-r-tools/reference/read_dlf.md)
   : Read a dlf file (Daisy log file) or a directory of dlf files
 
-- [`read_dlf_dir()`](https://daisy-model.github.io/daisyrVis/reference/read_dlf_dir.md)
+- [`read_dlf_dir()`](https://daisy-model.github.io/daisy-r-tools/reference/read_dlf_dir.md)
   : Walk a directory tree and read all dlf files in it.
 
-- [`read_dlf_file()`](https://daisy-model.github.io/daisyrVis/reference/read_dlf_file.md)
+- [`read_dlf_file()`](https://daisy-model.github.io/daisy-r-tools/reference/read_dlf_file.md)
   : Read a dlf file (Daisy log file)
 
-- [`read_dlf_spawn()`](https://daisy-model.github.io/daisyrVis/reference/read_dlf_spawn.md)
+- [`read_dlf_spawn()`](https://daisy-model.github.io/daisy-r-tools/reference/read_dlf_spawn.md)
   : Walk a directory tree generated by daisy spawn, read all dlf files
   in it, and merge similar log files into one dlf.
 
-- [`strip_common_prefix_from_names()`](https://daisy-model.github.io/daisyrVis/reference/strip_common_prefix_from_names.md)
+- [`strip_common_prefix_from_names()`](https://daisy-model.github.io/daisy-r-tools/reference/strip_common_prefix_from_names.md)
   : Strip common prefix from dlf names
 
-- [`` `[`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisyrVis/reference/sub-Dlf-method.md)
+- [`` `[`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisy-r-tools/reference/sub-Dlf-method.md)
   : \[ indexing on the data part of the dlf
 
-- [`` `[[`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisyrVis/reference/sub-sub-Dlf-method.md)
+- [`` `[[`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisy-r-tools/reference/sub-sub-Dlf-method.md)
   : \[\[ indexing on the data part of the dlf
 
-- [`` `[[<-`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisyrVis/reference/sub-subset-Dlf-method.md)
+- [`` `[[<-`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisy-r-tools/reference/sub-subset-Dlf-method.md)
   : \[\[ assignment on the data part of the dlf
 
-- [`` `[<-`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisyrVis/reference/subset-Dlf-method.md)
+- [`` `[<-`( ``*`<Dlf>`*`)`](https://daisy-model.github.io/daisy-r-tools/reference/subset-Dlf-method.md)
   : \[ assignment on the data part of the dlf
 
-- [`subset_dlf()`](https://daisy-model.github.io/daisyrVis/reference/subset_dlf.md)
+- [`subset_dlf()`](https://daisy-model.github.io/daisy-r-tools/reference/subset_dlf.md)
   : Select the subset of measurements in a specific time range.
 
-- [`write_dlf()`](https://daisy-model.github.io/daisyrVis/reference/write_dlf.md)
+- [`write_dlf()`](https://daisy-model.github.io/daisy-r-tools/reference/write_dlf.md)
   : Write a dlf object to a file

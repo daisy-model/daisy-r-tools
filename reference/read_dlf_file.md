@@ -20,13 +20,13 @@ An S4 object of class Dlf with three slots: header, units, data
 
 header is list with everything in the dlf file before the data. key:
 value pairs from the header are stored as named components of the list.
-units is a data.framecontaining the units of the values in data. data is
-a data.frame containing the logged values
+units is a data.frame containing the units of the values in data. data
+is a data.frame containing the logged values
 
 ## Examples
 
 ``` r
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual/Annual-FN/HourlyP-Annual-FN-2-2b.dlf")
 dlf <- read_dlf_file(path)
 slotNames(dlf)

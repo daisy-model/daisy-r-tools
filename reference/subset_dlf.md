@@ -59,7 +59,7 @@ Dlfs with data slot containing the selected rows
 
 ``` r
 # Load dlf data with read_dlf
-data_dir <- file.path(system.file("extdata", package="daisyrVis"),
+data_dir <- file.path(system.file("extdata", package="daisytools"),
                       "annual/Annual-FN")
 dlfs <- read_dlf_dir(data_dir)
 dlfs <- daisy_time_to_timestamp(dlfs)

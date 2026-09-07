@@ -2,7 +2,7 @@
 
 ``` r
 
-library(daisyrVis)
+library(daisytools)
 library(ggplot2)
 ```
 
@@ -12,11 +12,11 @@ can visualize how well the simulated data match the measured data.
 ## Read, prepare and visualize measured data
 
 We use the LAI field measurements from part 3 of the daisy course, which
-is bundled with `daisyrVis`
+is bundled with `daisytools`
 
 ``` r
 
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 field_path <- file.path(data_dir, "daisy-course/03/field_LAI.csv")
 field <- read.csv(field_path)
 head(field)
@@ -69,7 +69,7 @@ ggplot(data=field, mapping=aes(x=Date, y=LAI_mean, group=Method, color=Method,
 ## Read, prepare and visualize simulated data
 
 We use simulated LAI measurements from part 3 of the daisy course, which
-is bundled with `daisyrVis`.
+is bundled with `daisytools`.
 
 ``` r
 
@@ -115,7 +115,7 @@ head(sim[[names(sim)[1]]]$Date)
 ```
 
 For the simulated data we will use the plot function `plot_dlf` from
-`daisyrVis`, which knows how to plot multiple variables from multiple
+`daisytools`, which knows how to plot multiple variables from multiple
 `Dlf` objects together.
 
 ``` r

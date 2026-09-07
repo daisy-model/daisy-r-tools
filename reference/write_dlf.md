@@ -5,7 +5,7 @@ Write a dlf object to a file
 ## Usage
 
 ``` r
-write_dlf(dlf, path, sep = ",", include_dlf_header = FALSE)
+write_dlf(dlf, path, sep = "\t", include_dlf_header = FALSE)
 ```
 
 ## Arguments
@@ -24,4 +24,4 @@ write_dlf(dlf, path, sep = ",", include_dlf_header = FALSE)
 
 - include_dlf_header:
 
-  If TRUE write the Dlf header to the begining of the csv file
+  If TRUE write the Dlf header to the beginning of the csv file

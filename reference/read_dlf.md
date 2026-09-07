@@ -69,7 +69,7 @@ read_dlf_file, read_dlf_dir, read_dlf_spawn
 ## Examples
 
 ``` r
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual/Annual-FN/HourlyP-Annual-FN-2-2b.dlf")
 dlf <- read_dlf(path)
 slotNames(dlf)

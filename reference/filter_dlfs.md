@@ -25,7 +25,7 @@ A list of Dlfs where FUN is TRUE
 ## Examples
 
 ``` r
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 dlfs <- read_dlf_dir(file.path(data_dir, "annual"))
 names(dlfs)
 #> [1] "Annual-FN/HourlyP-Annual-FN-2-2b"        

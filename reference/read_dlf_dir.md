@@ -26,7 +26,7 @@ path to it
 ## Examples
 
 ``` r
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 dlfs <- read_dlf_dir(file.path(data_dir, "annual"))
 print(names(dlfs))
 #> [1] "Annual-FN/HourlyP-Annual-FN-2-2b"        

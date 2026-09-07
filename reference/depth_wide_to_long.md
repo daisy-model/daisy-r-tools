@@ -1,8 +1,8 @@
-# Transform wide format time series to a long format time series It is assumed that dlf@data only contains `time_name` columns and depth columns with the format \<var_name\>\_ e.g. "q_100"
+# Transform wide format time series to a long format time series It is assumed that dlf@data only contains `time_name` columns and depth columns with the format `<var_name>_<depth-below-surface>` e.g. "q_100"
 
 Transform wide format time series to a long format time series It is
 assumed that dlf@data only contains `time_name` columns and depth
-columns with the format \<var_name\>\_ e.g. "q_100"
+columns with the format `<var_name>_<depth-below-surface>` e.g. "q_100"
 
 ## Usage
 
@@ -42,13 +42,13 @@ depth_wide_to_long(
 
 An S4 object of class Dlf
 
-The data of rhe returned Dlf object contains one row for each time/depth
+The data of the returned Dlf object contains one row for each time/depth
 combination.
 
 ## Examples
 
 ``` r
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daily/DailyP/DailyP-Daily-WaterFlux.dlf")
 dlf <- read_dlf(path, convert_depth=FALSE)
 dlf@data[1,]

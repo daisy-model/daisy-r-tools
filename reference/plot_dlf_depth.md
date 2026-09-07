@@ -1,7 +1,7 @@
-# Plot one or more timepoints from one or more dlfs containing depth dependent timeseries
+# Plot one or more timepoints from one or more dlfs containing depth dependent time series
 
 Plot one or more timepoints from one or more dlfs containing depth
-dependent timeseries
+dependent time series
 
 ## Usage
 

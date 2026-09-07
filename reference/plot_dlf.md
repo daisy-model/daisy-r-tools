@@ -45,8 +45,8 @@ plot_dlf(
   non-type string for readability as in type="bar + lines + points"
 
   If a function, then it is passed a ggplot2 object and it should add a
-  geom to the object and return it. For example, type=function(gg) gg +
-  geom_point()
+  geom to the object and return it. For example,
+  `type=function(gg) { gg + geom_point() }`
 
 - mode:
 
@@ -83,7 +83,7 @@ variable, it is not possible to add further data to it.
 ## Examples
 
 ``` r
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual/Annual-FN")
 dlfs <- read_dlf(path)
 
@@ -98,7 +98,11 @@ plot_dlf(dlfs[[1]], "year", "Crop", "bar")
 # Same plot with a function for type
 geom <- function(gg) { gg + ggplot2::geom_col(position="dodge") }
 plot_dlf(dlfs[[1]], "year", "Crop", geom)
-#> Error in geom(gg): could not find function "geom"
+#> Ignoring unknown labels:
+#> • fill : "sim"
+#> • colour : "sim"
+#> • shape : "sim"
+
 
 # A plot with four variables
 dlfs <- strip_common_prefix_from_names(dlfs)

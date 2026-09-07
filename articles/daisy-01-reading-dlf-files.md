@@ -2,7 +2,7 @@
 
 ``` r
 
-library(daisyrVis)
+library(daisytools)
 ```
 
 Daisy log files (.dlf) can be read with `read_dlf`. `read_dlf` can read
@@ -15,11 +15,11 @@ processed by setting the mode parameter.
 ## Reading a single dlf file
 
 We start by reading a single dlf file and inspect the contents. We use
-the Soil chemical log that is bundled with `daisyrVis`.
+the Soil chemical log that is bundled with `daisytools`.
 
 ``` r
 
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "hourly/P2D-Daily-Soil_Chemical_110cm.dlf")
 dlf <- read_dlf(path)
 head(dlf)
@@ -61,7 +61,7 @@ dlf@header
 #> [1] "P2D-Daily-Soil Chemical_110cm.dlf"
 #> 
 #> $RUN
-#> [1] "Thu Aug 31 10"
+#> [1] "Thu Aug 31 10:50:37 2023"
 #> 
 #> $COLUMN
 #> [1] "*"
@@ -148,7 +148,7 @@ time. By default, these are detected and converted automatically by
 
 ``` r
 
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daily/DailyP/DailyP-Daily-WaterFlux.dlf")
 dlf <- read_dlf(path)
 head(dlf)
@@ -203,11 +203,11 @@ head(dlf@data)
 
 Daisy spawn produces a directory hierarchy where each directory contains
 the same log files. We use the Daisy spawn outputs that are bundled with
-`daisyrVis`.
+`daisytools`.
 
 ``` r
 
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "daisy-spawn-like")
 list.files(path, recursive=TRUE)
 #>  [1] "Pig_JB1_Free/FWater200-Y.dlf"   "Pig_JB1_Free/Harvest.dlf"      
@@ -283,11 +283,11 @@ unique(dlfs[[name]]$sim)
 ## Reading a directory with dlf files
 
 We use the tracer and field nitrogen logs that are bundled with
-`daisyrVis` and read them with `read_dlf_dir`
+`daisytools` and read them with `read_dlf_dir`
 
 ``` r
 
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual")
 list.files(path, pattern=".*dlf", recursive=TRUE)
 #> [1] "Annual-FN/HourlyP-Annual-FN-2-2b.dlf"        
@@ -356,7 +356,7 @@ dlfs[[name]]@header
 #> [1] "Annual-FN.dlf"
 #> 
 #> $RUN
-#> [1] "Mon Aug 28 16"
+#> [1] "Mon Aug 28 16:37:22 2023"
 #> 
 #> $COLUMN
 #> [1] "*"
@@ -371,7 +371,7 @@ dlfs[[name]]@header
 #> [1] "Runfile2b.dai"
 #> 
 #> $SIM
-#> [1] "Arable farm rotation; Soil"
+#> [1] "Arable farm rotation; Soil: 1D/ResFarm/Free; Weather: Daily values and P hourly values"
 ```
 
 ### Controlling which files are included
@@ -383,7 +383,7 @@ ending with `2b.dlf`, we can do
 
 ``` r
 
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "annual")
 dlfs <- read_dlf(path, pattern=".*2b\\.dlf")
 names(dlfs)

@@ -2,16 +2,16 @@
 
 ``` r
 
-library(daisyrVis)
+library(daisytools)
 ```
 
 We are going to read a dlf file and then calculate, summarize and plot
 mass balance. For this we will use the soil chemical log bundled with
-`daisyrVis`.
+`daisytools`.
 
 ``` r
 
-data_dir <- system.file("extdata", package="daisyrVis")
+data_dir <- system.file("extdata", package="daisytools")
 path <- file.path(data_dir, "hourly/P2D-Daily-Soil_Chemical_110cm.dlf")
 dlf <- read_dlf(path)
 ## We don't need timestamps for the mass balance calculation, but we need it for
