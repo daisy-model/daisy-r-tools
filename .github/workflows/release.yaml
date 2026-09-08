@@ -257,7 +257,7 @@ jobs:
           results <- lapply(result_files, readRDS)
           comments_file <- file.path(
             "release-assets",
-            sprintf("cran-comments-%s.md", Sys.getenv("RELEASE_TAG"))
+            sprintf("check-summary-%s.md", Sys.getenv("RELEASE_TAG"))
           )
 
           count_line <- function(entries, singular) {
@@ -324,4 +324,4 @@ jobs:
           overwrite_files: true
           files: |
             release-assets/*.tar.gz
-            release-assets/cran-comments-${{ needs.build.outputs.tag_name }}.md
+            release-assets/check-summary-${{ needs.build.outputs.tag_name }}.md

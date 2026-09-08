@@ -99,17 +99,18 @@ After opening a PR, ensure that all checks run without issues. Then manually do
 ```{R}
 devtools::check_win_release()
 devtools::check_win_oldrelease()
+devtools::check_win_devel()
 ```
 Wait for results by mail and verify that everything works.
 
 ### After merge into main
-Tag the current main with current version and push to start the release workflow. This will build the tarball for CRAN, run `R CMD check --no-manual --as-cran` on that exact tarball on macOS and Windows, run a separate Ubuntu `R CMD check --as-cran` with TinyTeX to verify that the PDF manual builds, and create a pre-release with the tarball and a generated `cran-comments-<tag>.md` file attached.
+Tag the current main with current version and push to start the release workflow. This will build the tarball for CRAN, run `R CMD check --no-manual --as-cran` on that exact tarball on macOS and Windows, run a separate Ubuntu `R CMD check --as-cran` with TinyTeX to verify that the PDF manual builds, and create a pre-release with the tarball and a generated `check-summary-<tag>.md` file attached.
 ```
 git tag v1.0.0
 git push origin v1.0.0
 ```
 If you need to refresh the tarball or generated comments for an existing pre-release, rerun the `Build Release Tarball` workflow manually and provide the existing tag.
 
-Download the tarball and `cran-comments-<tag>.md` from the pre-release. The comments file is generated from the GitHub release checks only, so review and add any release-specific information you want to include before submission.
+Download the tarball and `check-summary-<tag>.md` from the pre-release. The summary file is generated from the GitHub release checks only, so review and add any release-specific information you want to include before submission.
 
-Submit the downloaded tarball through the CRAN web form at <https://cran.r-project.org/submit.html> and paste the contents of the reviewed `cran-comments-<tag>.md` file into the submission comments field. Once CRAN submission is accepted remove the pre-release tag.
+Submit the downloaded tarball through the CRAN web form at <https://cran.r-project.org/submit.html> and paste the contents of the reviewed `check-summary-<tag>.md` file into the submission comments field. Once CRAN submission is accepted remove the pre-release tag.
