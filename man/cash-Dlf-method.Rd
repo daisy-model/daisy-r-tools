@@ -11,6 +11,10 @@
 
 \item{name}{Name of column in data part}
 }
+\value{
+The selected column from the data slot as the underlying column
+vector.
+}
 \description{
 $ indexing on the data part of the dlf
 }
