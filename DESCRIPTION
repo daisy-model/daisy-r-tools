@@ -1,14 +1,14 @@
 Package: daisytools
-Title: Tools for Working with Daisy Simulation Output
+Title: Reading and Visualizing Output from 'Daisy' Simulations
 Version: 1.0.0
 Authors@R: 
     person("Silas", "Ørting", , "silas@di.ku.dk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3081-1547"))
-Description: Provides tools for reading, transforming, and visualizing
-    log files produced by Daisy simulations. Includes support for
-    importing '.dlf' output files, reshaping depth-dependent and
-    time-series data, and creating static and interactive plots for
-    exploratory analysis and comparison of simulation results.
+Description: Read, transform, and visualize log files produced by
+    'Daisy' simulations. Supports importing dlf output files,
+    reshaping depth-dependent and time-series data, and creating
+    static and interactive plots for exploratory analysis and
+    comparison of simulation results.
 License: GPL (>= 3)
 Depends: R (>= 4.1.0)
 Encoding: UTF-8
