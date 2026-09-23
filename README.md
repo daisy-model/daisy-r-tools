@@ -113,4 +113,6 @@ Note that the tarball will be generated using the tagged commit, so if you need 
 
 Download the tarball and `check-summary-<tag>.md` from the pre-release. The summary file is generated from the GitHub release checks only, so review and add any release-specific information you want to include before submission.
 
+Before submitting, unpack the tarball and verify that it looks as expected. Are the latest changes you made included? If not, you have to create a new release.
+
 Submit the downloaded tarball through the CRAN web form at <https://cran.r-project.org/submit.html> and paste the contents of the reviewed `check-summary-<tag>.md` file into the submission comments field. Once CRAN submission is accepted remove the pre-release tag.
