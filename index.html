@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">daisytools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -150,7 +150,7 @@
 <p>Tag the current main with current version and push to start the release workflow. This will build the tarball for CRAN, run <code>R CMD check --no-manual --as-cran</code> on that exact tarball on macOS and Windows, run a separate Ubuntu <code>R CMD check --as-cran</code> with <code>TinyTeX</code> to verify that the PDF manual builds, and create a pre-release with the tarball and a generated <code>check-summary-&lt;tag&gt;.md</code> file attached.</p>
 <pre><code>git tag v1.0.0
 git push origin v1.0.0</code></pre>
-<p>If you need to refresh the tarball or generated comments for an existing pre-release, rerun the <code>Build Release Tarball</code> workflow manually and provide the existing tag.</p>
+<p>Note that the tarball will be generated using the tagged commit, so if you need to make changes to the release you will need to update the tag. Rerunning the <code>Build Release Tarball</code> workflow manually using the old tag will not pick up the changes.</p>
 <p>Download the tarball and <code>check-summary-&lt;tag&gt;.md</code> from the pre-release. The summary file is generated from the GitHub release checks only, so review and add any release-specific information you want to include before submission.</p>
 <p>Submit the downloaded tarball through the CRAN web form at <a href="https://cran.r-project.org/submit.html" class="external-link uri">https://cran.r-project.org/submit.html</a> and paste the contents of the reviewed <code>check-summary-&lt;tag&gt;.md</code> file into the submission comments field. Once CRAN submission is accepted remove the pre-release tag.</p>
 </div>
