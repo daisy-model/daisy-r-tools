@@ -109,7 +109,7 @@ Tag the current main with current version and push to start the release workflow
 git tag v1.0.0
 git push origin v1.0.0
 ```
-If you need to refresh the tarball or generated comments for an existing pre-release, rerun the `Build Release Tarball` workflow manually and provide the existing tag.
+Note that the tarball will be generated using the tagged commit, so if you need to make changes to the release you will need to update the tag. Rerunning the `Build Release Tarball` workflow manually using the old tag will not pick up the changes.
 
 Download the tarball and `check-summary-<tag>.md` from the pre-release. The summary file is generated from the GitHub release checks only, so review and add any release-specific information you want to include before submission.
 
