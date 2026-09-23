@@ -18,3 +18,7 @@ x$name
 - name:
 
   Name of column in data part
+
+## Value
+
+The selected column from the data slot as the underlying column vector.

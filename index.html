@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Tools for Working with Daisy Simulation Output • daisytools</title>
+<title>Reading and Visualizing Output from Daisy Simulations • daisytools</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Tools for Working with Daisy Simulation Output">
-<meta name="description" content="Provides tools for reading, transforming, and visualizing log files produced by Daisy simulations. Includes support for importing .dlf output files, reshaping depth-dependent and time-series data, and creating static and interactive plots for exploratory analysis and comparison of simulation results.">
-<meta property="og:description" content="Provides tools for reading, transforming, and visualizing log files produced by Daisy simulations. Includes support for importing .dlf output files, reshaping depth-dependent and time-series data, and creating static and interactive plots for exploratory analysis and comparison of simulation results.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Reading and Visualizing Output from Daisy Simulations">
+<meta name="description" content="Read, transform, and visualize log files produced by Daisy simulations. Supports importing dlf output files, reshaping depth-dependent and time-series data, and creating static and interactive plots for exploratory analysis and comparison of simulation results.">
+<meta property="og:description" content="Read, transform, and visualize log files produced by Daisy simulations. Supports importing dlf output files, reshaping depth-dependent and time-series data, and creating static and interactive plots for exploratory analysis and comparison of simulation results.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -147,7 +147,7 @@
 <div class="section level3">
 <h3 id="after-merge-into-main">After merge into main<a class="anchor" aria-label="anchor" href="#after-merge-into-main"></a>
 </h3>
-<p>Tag the current main with current version and push to start the release workflow. This will build the tarball for CRAN, run <code>R CMD check --no-manual --as-cran</code> on that exact tarball on macOS and Windows, run a separate Ubuntu <code>R CMD check --as-cran</code> with TinyTeX to verify that the PDF manual builds, and create a pre-release with the tarball and a generated <code>check-summary-&lt;tag&gt;.md</code> file attached.</p>
+<p>Tag the current main with current version and push to start the release workflow. This will build the tarball for CRAN, run <code>R CMD check --no-manual --as-cran</code> on that exact tarball on macOS and Windows, run a separate Ubuntu <code>R CMD check --as-cran</code> with <code>TinyTeX</code> to verify that the PDF manual builds, and create a pre-release with the tarball and a generated <code>check-summary-&lt;tag&gt;.md</code> file attached.</p>
 <pre><code>git tag v1.0.0
 git push origin v1.0.0</code></pre>
 <p>If you need to refresh the tarball or generated comments for an existing pre-release, rerun the <code>Build Release Tarball</code> workflow manually and provide the existing tag.</p>

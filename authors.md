@@ -7,12 +7,12 @@
 
 ## Citation
 
-Ørting S (2026). *daisytools: Tools for Working with Daisy Simulation
-Output*. R package version 1.0.0,
+Ørting S (2026). *daisytools: Reading and Visualizing Output from
+'Daisy' Simulations*. R package version 1.0.0,
 <https://daisy-model.github.io/daisy-r-tools/>.
 
     @Manual{,
-      title = {daisytools: Tools for Working with Daisy Simulation Output},
+      title = {daisytools: Reading and Visualizing Output from 'Daisy' Simulations},
       author = {Silas Ørting},
       year = {2026},
       note = {R package version 1.0.0},

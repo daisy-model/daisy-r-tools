@@ -22,3 +22,9 @@ x[[i, j]]
 - j:
 
   Name or index of column
+
+## Value
+
+If `j` is missing, the selected column from the data slot as the
+underlying column vector. Otherwise, the single value stored at row `i`
+and column `j`.

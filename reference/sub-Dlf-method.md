@@ -22,3 +22,10 @@ x[i, j]
 - j:
 
   Name or index of column
+
+## Value
+
+If `j` is missing, a `data.frame` containing the selected rows from the
+data slot. Otherwise, the result of subsetting the data slot by rows and
+columns, typically a vector for a single selected column or a
+`data.frame` for multiple columns.

@@ -26,3 +26,8 @@ x[[i, j]] <- value
 - value:
 
   New value to assign
+
+## Value
+
+An updated `Dlf` object with the selected column or single cell replaced
+in the data slot.

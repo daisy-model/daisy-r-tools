@@ -1,10 +1,10 @@
-# daisytools: Tools for Working with Daisy Simulation Output
+# daisytools: Reading and Visualizing Output from 'Daisy' Simulations
 
-Provides tools for reading, transforming, and visualizing log files
-produced by Daisy simulations. Includes support for importing '.dlf'
-output files, reshaping depth-dependent and time-series data, and
-creating static and interactive plots for exploratory analysis and
-comparison of simulation results.
+Read, transform, and visualize log files produced by 'Daisy'
+simulations. Supports importing dlf output files, reshaping
+depth-dependent and time-series data, and creating static and
+interactive plots for exploratory analysis and comparison of simulation
+results.
 
 ## See also
 

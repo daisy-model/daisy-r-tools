@@ -25,3 +25,8 @@ write_dlf(dlf, path, sep = "\t", include_dlf_header = FALSE)
 - include_dlf_header:
 
   If TRUE write the Dlf header to the beginning of the csv file
+
+## Value
+
+Invisibly returns `NULL`. Called for its side effect of writing the
+`Dlf` contents to `path`.

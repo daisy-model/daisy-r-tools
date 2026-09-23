@@ -22,3 +22,8 @@ x$name <- value
 - value:
 
   New value to assign
+
+## Value
+
+An updated `Dlf` object with the selected column replaced in the data
+slot.
