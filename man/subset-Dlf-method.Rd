@@ -15,6 +15,10 @@
 
 \item{value}{New value to assign}
 }
+\value{
+An updated \code{Dlf} object with the selected rows, columns, or cells
+replaced in the data slot.
+}
 \description{
 [ assignment on the data part of the dlf
 }

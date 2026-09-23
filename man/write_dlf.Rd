@@ -16,6 +16,10 @@ write_dlf(dlf, path, sep = "\\t", include_dlf_header = FALSE)
 \item{include_dlf_header}{If TRUE write the Dlf header to the beginning of
 the csv file}
 }
+\value{
+Invisibly returns \code{NULL}. Called for its side effect of writing the
+\code{Dlf} contents to \code{path}.
+}
 \description{
 Write a dlf object to a file
 }

@@ -4,9 +4,9 @@
 \name{daisytools-package}
 \alias{daisytools}
 \alias{daisytools-package}
-\title{daisytools: Tools for Working with Daisy Simulation Output}
+\title{daisytools: Reading and Visualizing Output from 'Daisy' Simulations}
 \description{
-Provides tools for reading, transforming, and visualizing log files produced by Daisy simulations. Includes support for importing '.dlf' output files, reshaping depth-dependent and time-series data, and creating static and interactive plots for exploratory analysis and comparison of simulation results.
+Read, transform, and visualize log files produced by 'Daisy' simulations. Supports importing dlf output files, reshaping depth-dependent and time-series data, and creating static and interactive plots for exploratory analysis and comparison of simulation results.
 }
 \seealso{
 Useful links:

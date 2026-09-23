@@ -13,6 +13,12 @@
 
 \item{j}{Name or index of column}
 }
+\value{
+If \code{j} is missing, a \code{data.frame} containing the selected rows from
+the data slot. Otherwise, the result of subsetting the data slot by rows
+and columns, typically a vector for a single selected column or a
+\code{data.frame} for multiple columns.
+}
 \description{
 [ indexing on the data part of the dlf
 }
