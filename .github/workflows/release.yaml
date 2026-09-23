@@ -68,7 +68,7 @@ jobs:
           R CMD build .
 
       - name: Upload release tarball
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: release-tarball
           path: "*.tar.gz"
@@ -91,7 +91,7 @@ jobs:
         with:
           ref: ${{ needs.build.outputs.checkout_ref }}
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: release-tarball
           path: dist
@@ -132,7 +132,7 @@ jobs:
 
       - name: Upload check results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: check-results-${{ matrix.os }}
           path: check-results-${{ matrix.os }}.rds
@@ -162,7 +162,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes tidy
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: release-tarball
           path: dist
@@ -208,7 +208,7 @@ jobs:
 
       - name: Upload manual check results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: check-results-ubuntu-latest-manual
           path: check-results-ubuntu-latest-manual.rds
@@ -231,12 +231,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: release-tarball
           path: release-assets
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: check-results-*
           path: check-results
