@@ -4,38 +4,13 @@ A suite of visualization tools for Daisy log files written in R.
 
 ## Installation
 
-`daisytools` is currently only available from github. You need Rtools to
-build the package. If not already installed, you can install it with
-your package manager or from <https://cran.r-project.org>. You can then
-use `devtools` to install `daisytools`. Depending on your platform, you
-might need to install `git`.
-
-First install `devtools`
+`daisytools` is now available from
+[CRAN](https://cran.r-project.org/package=daisytools) and can be
+installed from `R` with
 
 ``` R
-install.packages('devtools')
+install.packages('daisytools')
 ```
-
-Then try to install `daisytools`
-
-``` R
-devtools::install_git('https://github.com/daisy-model/daisy-r-tools')
-```
-
-If this fails try to install `git2r`
-
-``` R
-install.packages('git2r')
-```
-
-and install `daisytools` again
-
-``` R
-devtools::install_git('https://github.com/daisy-model/daisy-r-tools')
-```
-
-If this fails open an issue and describe the problem
-<https://github.com/daisy-model/daisy-r-tools/issues>
 
 You can remove the package with
 
